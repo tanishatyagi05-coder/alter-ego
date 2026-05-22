@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a0f;
+  --bg-card: #13131a;
+  --bg-hover: #1a1a24;
+  --border: #2a2a3a;
+  --text-primary: #f0f0f8;
+  --text-secondary: #8888aa;
+  --text-muted: #555570;
+  --accent: #7c6fe0;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+}
+@keyframes floatSlow {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
