@@ -9,11 +9,20 @@ export default function MessageBubble({
   const isUser = sender === 'user'
 
   return (
+
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{
+        opacity: 0,
+        y: 30,
+        filter: 'blur(10px)',
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        filter: 'blur(0px)',
+      }}
       transition={{
-        duration: 0.5,
+        duration: 0.7,
         delay,
       }}
       className={`flex ${
@@ -22,23 +31,49 @@ export default function MessageBubble({
     >
 
       <div
-        className={`max-w-xl px-6 py-4 rounded-3xl border ${
-          isUser
-            ? 'bg-purple-600 border-purple-500'
-            : 'bg-white/5 border-white/10'
-        }`}
+        className={`
+          max-w-2xl px-7 py-5 rounded-3xl border backdrop-blur-xl
+          transition-all duration-300 shadow-2xl
+          
+          ${
+            isUser
+              ? `
+                bg-purple-600/20
+                border-purple-500/40
+                text-white
+              `
+              : `
+                bg-white/5
+                border-white/10
+                text-gray-100
+              `
+          }
+        `}
       >
 
-        <p className="text-sm opacity-70 mb-2">
+        {/* Sender Label */}
+        <p
+          className={`
+            text-xs tracking-[0.3em] uppercase mb-3 font-semibold
+            
+            ${
+              isUser
+                ? 'text-purple-300'
+                : 'text-gray-500'
+            }
+          `}
+        >
           {isUser ? 'YOU' : 'ALTER EGO'}
         </p>
 
-        <p className="text-lg leading-relaxed">
+        {/* Message */}
+        <p className="text-lg md:text-xl leading-relaxed">
           {text}
         </p>
 
       </div>
 
     </motion.div>
+
   )
 }
