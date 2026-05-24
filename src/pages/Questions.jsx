@@ -31,7 +31,11 @@ export default function Questions() {
 
     } else {
 
-      navigate('/results')
+     navigate('/results', {
+  state: {
+    answers: updatedAnswers,
+  },
+})
 
     }
   }

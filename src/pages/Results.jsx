@@ -1,6 +1,40 @@
 import { motion } from 'framer-motion'
+import { useLocation } from 'react-router-dom'
+
+import TraitCard from '../components/TraitCard'
 
 export default function Results() {
+
+  const location = useLocation()
+
+  const answers = location.state?.answers || []
+
+  function generateProfile() {
+
+    if (
+      answers.includes('Honesty') &&
+      answers.includes('Yes')
+    ) {
+      return {
+        title: 'Rational Thinker',
+        alignment: 'Pragmatic Neutral',
+        conflict: 'High',
+        description:
+          'You prioritize logic over emotional comfort and tend to make difficult decisions rationally.',
+      }
+    }
+
+    return {
+      title: 'Empathetic Idealist',
+      alignment: 'Moral Optimist',
+      conflict: 'Moderate',
+      description:
+        'You value emotional harmony and believe morality should protect people before systems.',
+    }
+  }
+
+  const profile = generateProfile()
+
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center px-6 overflow-hidden">
 
@@ -20,23 +54,28 @@ export default function Results() {
         </h1>
 
         <p className="text-gray-300 text-lg leading-relaxed mb-8">
-          Your responses suggest a morally conflicted but emotionally rational personality.
-          You value honesty over comfort and tend to justify difficult decisions logically.
+          {profile.description}
         </p>
 
         <div className="space-y-4">
 
-          <div className="bg-white/5 p-4 rounded-2xl border border-white/10">
-            Psychological Trait: Rational Thinker
-          </div>
+          <TraitCard
+            title="Psychological Trait"
+            value={profile.title}
+            delay={0.2}
+          />
 
-          <div className="bg-white/5 p-4 rounded-2xl border border-white/10">
-            Moral Alignment: Pragmatic Neutral
-          </div>
+          <TraitCard
+            title="Moral Alignment"
+            value={profile.alignment}
+            delay={0.4}
+          />
 
-          <div className="bg-white/5 p-4 rounded-2xl border border-white/10">
-            Internal Conflict Level: High
-          </div>
+          <TraitCard
+            title="Internal Conflict Level"
+            value={profile.conflict}
+            delay={0.6}
+          />
 
         </div>
 
