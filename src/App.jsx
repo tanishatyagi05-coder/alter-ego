@@ -2,8 +2,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Home from './pages/Home'
 import Questions from './pages/Questions'
-import Debate from './pages/Debate'
 import Results from './pages/Results'
+
+import ChatRoom from './pages/ChatRoom'
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
 
         <Route
           path="/debate"
-          element={<Debate />}
+          element={<ChatRoom />}
         />
 
         <Route

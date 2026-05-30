@@ -11,69 +11,41 @@ export default function MessageBubble({
   return (
 
     <motion.div
+
       initial={{
         opacity: 0,
-        y: 30,
-        filter: 'blur(10px)',
+        y: 20,
       }}
+
       animate={{
         opacity: 1,
         y: 0,
-        filter: 'blur(0px)',
       }}
+
       transition={{
-        duration: 0.7,
+        duration: 0.4,
         delay,
       }}
+
       className={`flex ${
         isUser ? 'justify-end' : 'justify-start'
       }`}
     >
 
       <div
-        className={`
-          max-w-2xl px-7 py-5 rounded-3xl border backdrop-blur-xl
-          transition-all duration-300 shadow-2xl
-          
-          ${
-            isUser
-              ? `
-                bg-purple-600/20
-                border-purple-500/40
-                text-white
-              `
-              : `
-                bg-white/5
-                border-white/10
-                text-gray-100
-              `
-          }
-        `}
+        className={`max-w-[75%] px-5 py-4 rounded-2xl shadow-lg ${
+          isUser
+            ? 'bg-red-600 text-white'
+            : 'bg-zinc-900 border border-zinc-800 text-zinc-200'
+        }`}
       >
 
-        {/* Sender Label */}
-        <p
-          className={`
-            text-xs tracking-[0.3em] uppercase mb-3 font-semibold
-            
-            ${
-              isUser
-                ? 'text-purple-300'
-                : 'text-gray-500'
-            }
-          `}
-        >
-          {isUser ? 'YOU' : 'ALTER EGO'}
-        </p>
-
-        {/* Message */}
-        <p className="text-lg md:text-xl leading-relaxed">
+        <p className="leading-relaxed">
           {text}
         </p>
 
       </div>
 
     </motion.div>
-
   )
-}don
+}
